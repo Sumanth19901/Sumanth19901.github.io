@@ -1,6 +1,6 @@
-.h-center{
-    text-align: center ;
-}
-.main-heading{
-    color: blue;
-}
+:root {
+    --bg:#0b0d10; --card:#12161b; --muted:#8b95a7; --text:#e6edf3; --line:#212734;
+    --brand:#4f46e5; --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --chip:#1f2937;
+  }
+  :root.light { --bg:#f7f8fb; --card:#ffffff; --muted:#5b6473; --text:#0b1220; --line:#e7ebf3; --brand:#4f46e5; --ok:#16a34a; --warn:#d97706; --bad:#dc2626; --chip:#eef2ff; }
+  *{ box-sizing:border-box }

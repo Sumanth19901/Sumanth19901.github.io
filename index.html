@@ -1,17 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Sumanth19901.github.io/components/style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AQVH915 – Quantum Jobs Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
-    <div class="h-center">
-        <h1 class="main-heading">Tourism</h1>
-        <P>Plan wherever you want to go</P>
-        <button>Get started</button>
+  <div class="container">
+    <header>
+      <div>
+        <h1>AQVH915 – Quantum Jobs Tracker</h1>
+        <div class="sub">Dashboard to monitor IBM Quantum job statuses & backend queues</div>
+      </div>
+      <div class="split">
+        <input id="apiUrl" class="api" value="http://127.0.0.1:8000" />
+        <button id="theme" class="toggle" title="Toggle theme">🌗</button>
+      </div>
+    </header>
+
+    <div class="toolbar card">
+      <select id="backend"></select>
+      <select id="status">
+        <option value="">All statuses</option>
+        <option>queued</option>
+        <option>running</option>
+        <option>completed</option>
+        <option>failed</option>
+      </select>
+      <input id="search" placeholder="Search job id…" />
+      <button id="refresh">Refresh</button>
+      <span id="msg" class="muted"></span>
     </div>
+
+    <div class="row">
+      <section class="card">
+        <div class="cards" id="kpis">
+          <div class="kpi card"><h3>Total Jobs</h3><div class="v" id="k_total">–</div></div>
+          <div class="kpi card"><h3>Queued</h3><div class="v" id="k_queued">–</div></div>
+          <div class="kpi card"><h3>Running</h3><div class="v" id="k_running">–</div></div>
+          <div class="kpi card"><h3>Completed</h3><div class="v" id="k_completed">–</div></div>
+        </div>
+        <div style="margin-top:12px">
+          <table id="jobsTable">
+            <thead>
+              <tr>
+                <th data-sort="id">Job ID ▲▼</th>
+                <th data-sort="backend">Backend</th>
+                <th data-sort="status">Status</th>
+                <th data-sort="shots" class="right">Shots</th>
+                <th data-sort="submitted_at">Submitted</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="footer">Tip: click a column header to sort. Data auto‑refreshes every 30s.</div>
+      </section>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Backends</h3>
+        <div id="backendList"></div>
+        <canvas id="statusChart" height="220" style="margin-top:16px"></canvas>
+      </aside>
+    </div>
+
+    <div class="footer">Keyboard: <kbd>r</kbd> to refresh, <kbd>/</kbd> to focus search.</div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
