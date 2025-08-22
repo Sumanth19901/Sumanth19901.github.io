@@ -1,4 +1,4 @@
-# Sumanth19901.github.io
+ # Sumanth19901.github.io
 Here’s how we can split your **single-file HTML dashboard** into a structured project layout (frontend only). Each piece goes into its own file:
 
 ```
